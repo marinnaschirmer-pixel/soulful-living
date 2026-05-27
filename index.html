@@ -21,6 +21,9 @@
 html{scroll-behavior:smooth} section{scroll-margin-top:120px}
 body{font-family:'Jost',sans-serif;background:var(--stone);color:var(--dark);font-weight:300;overflow-x:hidden}
 
+.ntab-elements{color:var(--gold)!important;font-style:italic}
+.ntab-elements:hover{color:var(--sage)!important}
+.mmlink-elements{color:var(--gold)!important;font-style:italic}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);border-bottom:.5px solid rgba(78,97,77,.12)}
 .nav-top{display:flex;align-items:center;justify-content:space-between;padding:.3rem 3rem}
@@ -146,7 +149,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s;backgrou
 .founder-img-col{position:relative;overflow:hidden;border-radius:1px}
 .founder-img-col img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block;border-radius:1px}
 .founder-img-col::after{display:none}
-.founder-text-col{background:transparent;padding:0;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto}
+.founder-text-col{background:transparent;padding:0;display:flex;flex-direction:column;justify-content:flex-start}
 .founder-letter{font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.95;color:var(--dark);margin-top:1.5rem}
 .founder-letter p{margin-bottom:1.1rem}
 .founder-letter em{font-style:italic;color:var(--sage)}
@@ -258,12 +261,59 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
 .footer-bottom{border-top:.5px solid rgba(78,97,77,.15);padding:1.5rem 0;display:flex;justify-content:space-between;font-size:.68rem;color:rgba(46,48,40,.35)}
 
 
+/* ─── SOFT CLUB ─── */
+.softclub-section{background:var(--off);padding:6rem 3rem}
+.softclub-header{max-width:640px;margin:0 auto 4rem;text-align:center}
+.softclub-clubs{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1020px;margin:0 auto}
+.softclub-card{background:var(--stone);border:.5px solid rgba(78,97,77,.12);border-radius:1px;display:flex;flex-direction:column}
+.softclub-card-dark{background:var(--dark)}
+.softclub-card-header{padding:2.2rem 2.5rem 1.8rem;border-bottom:.5px solid rgba(78,97,77,.1)}
+.softclub-card-dark .softclub-card-header{border-bottom-color:rgba(187,203,205,.1)}
+.softclub-card-tag{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem}
+.softclub-card-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--sage);line-height:1}
+.softclub-card-dark .softclub-card-name{color:var(--cream)}
+.softclub-card-name em{font-style:italic;color:var(--gold)}
+.softclub-card-desc{font-size:.82rem;line-height:1.75;color:#7a7a6a;margin-top:.7rem}
+.softclub-card-dark .softclub-card-desc{color:rgba(251,238,210,.55)}
+.softclub-plans-single{justify-content:center;padding:2rem 2.5rem}
+.softclub-single-price{text-align:center;padding:1.5rem 0}
+.softclub-single-sessions{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.8rem}
+.softclub-single-value{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--sage);line-height:1}
+.softclub-single-value small{font-family:'Jost',sans-serif;font-size:.65rem;letter-spacing:.1em;color:#9a9a8a;vertical-align:middle}
+.softclub-single-per{font-size:.78rem;color:#8a8a7a;margin-top:.5rem}
+.softclub-single-divider{height:.5px;background:rgba(78,97,77,.12);margin:.5rem 0}
+.softclub-single-payment{text-align:center;padding:1.2rem 0}
+.softclub-single-payment-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.softclub-single-options{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.softclub-single-options span{background:var(--off);border:.5px solid rgba(78,97,77,.15);padding:.35rem .9rem;font-size:.72rem;color:#6a6a5a;border-radius:1px}
+.softclub-single-highlight{background:var(--sage)!important;color:var(--cream)!important;border-color:var(--sage)!important}
+.softclub-plans{padding:1.5rem 2.5rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+.softclub-plan{border:.5px solid rgba(78,97,77,.1);border-radius:1px;padding:1.1rem 1.4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;transition:background .2s}
+.softclub-card-dark .softclub-plan{border-color:rgba(187,203,205,.1)}
+.softclub-plan-featured{background:rgba(78,97,77,.05);border-color:rgba(78,97,77,.2)}
+.softclub-card-dark .softclub-plan-featured{background:rgba(187,203,205,.07);border-color:rgba(187,203,205,.2)}
+.softclub-plan-name{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.softclub-card-dark .softclub-plan-name{color:var(--sage-pale)}
+.softclub-badge{background:var(--gold);color:#fff;font-size:.52rem;letter-spacing:.1em;padding:.15rem .5rem;border-radius:1px}
+.softclub-plan-detail{font-size:.75rem;color:#8a8a7a}
+.softclub-card-dark .softclub-plan-detail{color:rgba(251,238,210,.4)}
+.softclub-plan-price{text-align:right}
+.softclub-plan-month{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--sage);line-height:1}
+.softclub-card-dark .softclub-plan-month{color:var(--cream)}
+.softclub-plan-month small{font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.08em;color:#9a9a8a;vertical-align:middle}
+.softclub-plan-total{font-size:.68rem;color:#9a9a8a;margin-top:.15rem}
+.softclub-card-dark .softclub-plan-total{color:rgba(251,238,210,.3)}
+.softclub-cta{display:block;text-align:center;margin:0 2.5rem 2.2rem;background:var(--sage);color:var(--cream);padding:.9rem;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:1px;transition:background .2s}
+.softclub-cta:hover{background:var(--sage-mid)}
+.softclub-card-dark .softclub-cta{background:var(--sage-mid)}
+.softclub-card-dark .softclub-cta:hover{background:var(--sage)}
+@media(max-width:720px){.softclub-clubs{grid-template-columns:1fr}.softclub-section{padding:4rem 1.5rem}}
 /* ─── MODAL PROCEDIMENTOS ─── */
 .proc-card{cursor:pointer}
 .proc-card::before{content:'Saiba mais';position:absolute;bottom:1rem;right:1.2rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .3s}
 .proc-card:hover::before{opacity:1}
-.modal-overlay{position:fixed;inset:0;background:rgba(46,48,40,.7);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
-.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-overlay{position:fixed;inset:0;background:rgba(46,48,40,.7);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
+.modal-overlay.open{opacity:1;pointer-events:all;backdrop-filter:blur(6px)}
 .modal-box{background:var(--stone);max-width:620px;width:100%;max-height:88vh;overflow-y:auto;border-radius:1px;position:relative;transform:translateY(24px);transition:transform .35s;padding:3rem 3.5rem}
 .modal-overlay.open .modal-box{transform:translateY(0)}
 .modal-close{position:absolute;top:1.4rem;right:1.6rem;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--sage);line-height:1;opacity:.6;transition:opacity .2s}
@@ -339,10 +389,10 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
     <a href="#soulful" class="ntab" data-section="soulful">A Soulful</a>
     <a href="#procedimentos" class="ntab" data-section="procedimentos">Jornada do Cuidado</a>
     <a href="#ozonio" class="ntab" data-section="ozonio">Ozonioterapia</a>
-    <a href="#planos" class="ntab" data-section="planos">Planos</a>
+    <a href="#planos" class="ntab" data-section="planos">Soft Club</a>
+    <a href="elements-club.html" class="ntab ntab-elements" target="_blank">Elements Club</a>
     <a href="#fundadora" class="ntab" data-section="fundadora">A Fundadora</a>
     <a href="#depoimentos" class="ntab" data-section="depoimentos">Depoimentos</a>
-    <a href="#blog" class="ntab" data-section="blog">Papo de Consultório</a>
     <a href="#sala" class="ntab" data-section="sala">Atenda Aqui</a>
   </div>
   <!-- mobile menu -->
@@ -351,10 +401,10 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
     <a href="#soulful" class="mmlink" onclick="closeMobile()">A Soulful</a>
     <a href="#procedimentos" class="mmlink" onclick="closeMobile()">Jornada do Cuidado</a>
     <a href="#ozonio" class="mmlink" onclick="closeMobile()">Ozonioterapia</a>
-    <a href="#planos" class="mmlink" onclick="closeMobile()">Planos</a>
+    <a href="#planos" class="mmlink" onclick="closeMobile()">Soft Club</a>
+    <a href="elements-club.html" class="mmlink mmlink-elements" target="_blank">Elements Club ↗</a>
     <a href="#fundadora" class="mmlink" onclick="closeMobile()">A Fundadora</a>
     <a href="#depoimentos" class="mmlink" onclick="closeMobile()">Depoimentos</a>
-    <a href="#blog" class="mmlink" onclick="closeMobile()">Papo de Consultório</a>
     <a href="#sala" class="mmlink" onclick="closeMobile()">Atenda no nosso espaço</a>
     <a href="#agendar" class="mmlink mmlink-cta" onclick="closeMobile()">Agendar</a>
   </div>
@@ -692,23 +742,84 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
 
 <!-- ════ PLANOS ════ -->
 <section id="planos">
-  <div class="plans-section">
-    <span class="section-label">Em breve</span>
-    <h2 class="section-title">Clubes de <em>Cuidado</em></h2>
-    <div class="plans-soon reveal">
-      <p>Estamos desenhando com muito carinho uma forma de tornar o cuidado contínuo mais acessível e especial para você. A ideia é simples: você escolhe o clube que faz sentido para o seu momento, e garante seus procedimentos favoritos ao longo do ano — com vantagens exclusivas.</p>
-      <p>Em breve você poderá escolher entre:</p>
-      <div class="plans-pills">
-        <span class="plans-pill">Clube Health</span>
-        <span class="plans-pill">Clube Wellness</span>
-        <span class="plans-pill">Clube Beauty</span>
-        <span class="plans-pill">Clube do Ozônio</span>
-        <span class="plans-pill">Clube Botox</span>
-      </div>
-      <p style="margin-top:2rem;font-size:.82rem;color:#8a8a7a">Quer ser avisada quando lançar? Entre em contato pelo WhatsApp e te colocamos na lista.</p>
-      <a href="https://wa.me/5541936182382?text=Quero%20saber%20sobre%20os%20clubes%20da%20Soulful!" class="btn-sage" style="margin-top:1.2rem;display:inline-block">Me avise pelo WhatsApp</a>
-    </div>
+<div class="softclub-section">
+  <div class="softclub-header reveal">
+    <span class="section-label">Cuidado contínuo</span>
+    <h2 class="section-title">Soft <em>Club</em></h2>
+    <p class="section-body" style="max-width:520px;margin:0 auto">Escolha o clube que faz sentido para o seu momento e garanta seus procedimentos favoritos com condições especiais — mês a mês, sem complicação.</p>
   </div>
+  <div class="softclub-clubs reveal">
+
+    <!-- SOFT GLOW -->
+    <div class="softclub-card">
+      <div class="softclub-card-header">
+        <span class="softclub-card-tag">Club de Botox</span>
+        <h3 class="softclub-card-name">Soft <em>Glow</em></h3>
+        <p class="softclub-card-desc">Expressão suave, aparência descansada e naturalidade em dia. Um ritual periódico que preserva o melhor de você.</p>
+      </div>
+      <div class="softclub-plans softclub-plans-single">
+        <div class="softclub-single-price">
+          <p class="softclub-single-sessions">3 aplicações no ano</p>
+          <p class="softclub-single-value">R$2.550<small>/ano</small></p>
+          <p class="softclub-single-per">R$850 por aplicação</p>
+        </div>
+        <div class="softclub-single-divider"></div>
+        <div class="softclub-single-payment">
+          <p class="softclub-single-payment-label">Pagamento flexível</p>
+          <div class="softclub-single-options">
+            <span>À vista</span>
+            <span>Parcelado</span>
+            <span class="softclub-single-highlight">R$220/mês</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/5541936182382?text=Quero%20saber%20mais%20sobre%20o%20Soft%20Glow!" target="_blank" class="softclub-cta">Quero entrar no Soft Glow</a>
+    </div>
+
+    <!-- SOFT BREATH -->
+    <div class="softclub-card softclub-card-dark">
+      <div class="softclub-card-header">
+        <span class="softclub-card-tag">Club de Ozônio</span>
+        <h3 class="softclub-card-name">Soft <em>Breath</em></h3>
+        <p class="softclub-card-desc">Oxigenação, regeneração e vitalidade de dentro para fora. Para quem quer saúde celular como rotina de vida.</p>
+      </div>
+      <div class="softclub-plans">
+        <div class="softclub-plan">
+          <div>
+            <p class="softclub-plan-name">Individual Semestral</p>
+            <p class="softclub-plan-detail">12 sessões · R$50 por sessão</p>
+          </div>
+          <div class="softclub-plan-price">
+            <p class="softclub-plan-month">R$100<small>/mês</small></p>
+            <p class="softclub-plan-total">R$600 total</p>
+          </div>
+        </div>
+        <div class="softclub-plan">
+          <div>
+            <p class="softclub-plan-name">Individual Anual</p>
+            <p class="softclub-plan-detail">24 sessões · R$45 por sessão</p>
+          </div>
+          <div class="softclub-plan-price">
+            <p class="softclub-plan-month">R$90<small>/mês</small></p>
+            <p class="softclub-plan-total">R$1.080 total</p>
+          </div>
+        </div>
+        <div class="softclub-plan">
+          <div>
+            <p class="softclub-plan-name">Família Semestral</p>
+            <p class="softclub-plan-detail">24 sessões · R$35 por pessoa</p>
+          </div>
+          <div class="softclub-plan-price">
+            <p class="softclub-plan-month">R$140<small>/mês</small></p>
+            <p class="softclub-plan-total">R$840 total</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/5541936182382?text=Quero%20saber%20mais%20sobre%20o%20Soft%20Breath!" target="_blank" class="softclub-cta">Quero entrar no Soft Breath</a>
+    </div>
+
+  </div>
+</div>
 </section>
 
 <!-- ════ BLOG ════ -->
@@ -740,6 +851,7 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
           <span class="cred">Biomedicina (cursando)</span>
           <span class="cred">Ozonioterapia 500h+</span>
           <span class="cred">Contadora</span>
+          <span class="cred">e muito mais</span>
         </div>
       </div>
     </div>
@@ -758,15 +870,6 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
   </div>
 </section>
 
-<section id="blog">
-  <div class="blog-section">
-    <span class="section-label">Papo de Consultório</span>
-    <h2 class="section-title">Reflexões, dicas e<br><em>histórias reais</em></h2>
-    <p class="blog-desc">Como se fosse uma coluna semanal. Sem formalidade, sem filtro. Marinna escreve sobre estética, saúde, vida e tudo que passa pela cabeça de uma profissional apaixonada pelo que faz — direto do consultório para você.</p>
-    <a href="https://substack.com" target="_blank" class="blog-cta">Ler os textos no Substack</a>
-    <p style="font-size:.75rem;color:#9a9a8a;margin-top:1.5rem">Novo texto toda semana · Assine para receber por e-mail</p>
-  </div>
-</section>
 
 <!-- ════ AGENDAR / SALA ════ -->
 <section id="agendar">
@@ -845,7 +948,7 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
 <!-- MODAL PROCEDIMENTOS -->
 <div class="modal-overlay" id="procModal" onclick="closeProcModal(event)">
   <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('procModal').classList.remove('open')">✕</button>
+    <button class="modal-close" onclick="document.getElementById('procModal').classList.remove('open');document.body.style.overflow=''">✕</button>
     <span class="modal-tag" id="modalTag"></span>
     <h3 class="modal-title" id="modalTitle"></h3>
     <p class="modal-lead" id="modalLead"></p>
@@ -871,8 +974,7 @@ footer{background:#e8e4da;padding:2rem 3rem 0}
         <li href="#fundadora">A Fundadora</li>
         <li href="#procedimentos">Jornada do Cuidado</li>
         <li href="#ozonio">Ozonioterapia</li>
-        <li href="#planos">Planos</li>
-        <li href="#blog">Papo de Consultório</li>
+        <li href="#planos">Soft Club</li>
       </ul>
     </div>
     <div class="footer-col">
@@ -975,7 +1077,7 @@ const procData = {
   'Ozonioterapia': {
     tag: 'Equilibrar',
     lead: 'O coração da Soulful. Um gás que a natureza conhece há milênios — que a ciência aprendeu a usar com precisão.',
-    how: 'O ozônio medicinal (O₃) é aplicado em diferentes formas conforme a indicação: insuflação local, aplicação em óleo ozonizado, autohemoterapia (o sangue do próprio paciente é ozonizado e reinfundido) ou injeção subcutânea. Age estimulando a oxigenação celular, ativando enzimas antioxidantes, reduzindo a inflamação sistêmica e regenerando tecidos em nível celular. Mais de 4.500 estudos indexados no PubMed documentam sua eficácia. No Brasil, é prática regulamentada pela Lei nº 14.648/2023.',
+    how: 'O ozônio medicinal (O₃) é aplicado em diferentes formas conforme a indicação: insuflação local, aplicação em óleo ozonizado e injeção subcutânea. Age estimulando a oxigenação celular, ativando enzimas antioxidantes, reduzindo a inflamação sistêmica e regenerando tecidos em nível celular. Mais de 4.500 estudos indexados no PubMed documentam sua eficácia. No Brasil, é prática regulamentada pela Lei nº 14.648/2023.',
     forList: ['Fadiga e baixa vitalidade','Inflamação crônica e sistêmica','Acne e pele inflamada','Gordura localizada e celulite','Rejuvenescimento celular profundo','Recuperação pós-procedimentos','Complemento e potencializador de todos os tratamentos'],
     result: 'Mais energia e disposição, pele mais saudável e luminosa, redução de processos inflamatórios, equilíbrio do organismo de dentro para fora. Um tratamento que vai muito além da estética.'
   },

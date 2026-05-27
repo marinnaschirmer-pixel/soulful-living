@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soulful Elements Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1A1710;
+    --gold: #B8974A;
+    --gold-light: #D4B06A;
+    --muted: #7A7460;
+    --border: rgba(184,151,74,0.2);
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(184,151,74,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(184,151,74,0.06) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(52px, 9vw, 110px);
+    line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1px solid var(--gold);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .hero-cta:hover { color: var(--dark); }
+  .hero-cta:hover::before { transform: translateX(0); }
+  .hero-cta span { position: relative; z-index: 1; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ─── MANIFESTO ─── */
+  .manifesto {
+    padding: 120px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .manifesto-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(24px, 4vw, 38px);
+    line-height: 1.5;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+
+  .manifesto-quote strong {
+    font-weight: 400;
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .manifesto-body {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 52px);
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 64px;
+    line-height: 1.8;
+  }
+
+  /* ─── ELEMENTS INTRO ─── */
+  .elements-section {
+    padding: 80px 24px 120px;
+    background: var(--dark);
+  }
+
+  .elements-section .section-title { color: var(--cream); }
+  .elements-section .section-subtitle { color: rgba(245,240,232,0.45); }
+  .elements-section .section-label { color: var(--gold); }
+
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 2px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .element-card {
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(184,151,74,0.1);
+    padding: 48px 36px;
+    text-align: center;
+    transition: all 0.5s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .element-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(184,151,74,0.04);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .element-card:hover::before { opacity: 1; }
+  .element-card:hover { border-color: rgba(184,151,74,0.3); }
+
+  .element-number {
+    font-family: var(--serif);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: rgba(184,151,74,0.5);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .element-name {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .element-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .element-period {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    border: 1px solid rgba(184,151,74,0.2);
+    padding: 4px 14px;
+    margin-bottom: 28px;
+  }
+
+  .element-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.45);
+  }
+
+  /* ─── TIERS ─── */
+  .tiers-section { padding: 120px 24px; }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 1px;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: var(--border);
+  }
+
+  .tier-card {
+    background: var(--cream);
+    padding: 48px 36px 40px;
+    position: relative;
+  }
+
+  .tier-card.featured {
+    background: var(--dark);
+    z-index: 1;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 32px;
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .tier-badge.outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .tier-name {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .tier-card.featured .tier-name { color: var(--cream); }
+
+  .tier-italic {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .tier-price-block {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .tier-price {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+  }
+
+  .tier-card.featured .tier-price { color: var(--cream); }
+
+  .tier-price sub {
+    font-size: 18px;
+    font-family: var(--sans);
+    font-weight: 200;
+    vertical-align: baseline;
+  }
+
+  .tier-price-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+
+  .tier-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .tier-items li {
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .tier-card.featured .tier-items li { color: rgba(245,240,232,0.7); }
+  .tier-card:not(.featured) .tier-items li { color: var(--muted); }
+
+  .tier-items li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .tier-highlight {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 8px 14px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .tier-card:not(.featured) .tier-highlight {
+    background: rgba(184,151,74,0.08);
+    color: var(--gold);
+  }
+
+  .tier-card.featured .tier-highlight {
+    background: rgba(184,151,74,0.15);
+    color: var(--gold-light);
+  }
+
+  .tier-cta {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .tier-card:not(.featured) .tier-cta {
+    border: 1px solid var(--border);
+    color: var(--dark);
+  }
+
+  .tier-card:not(.featured) .tier-cta:hover {
+    background: var(--dark);
+    color: var(--cream);
+    border-color: var(--dark);
+  }
+
+  .tier-card.featured .tier-cta {
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  .tier-card.featured .tier-cta:hover { background: var(--gold-light); }
+
+  /* ─── PROTOCOL ─── */
+  .protocol-section {
+    padding: 120px 24px;
+    background: var(--dark);
+  }
+
+  .protocol-section .section-title { color: var(--cream); }
+  .protocol-section .section-subtitle { color: rgba(245,240,232,0.4); }
+
+  .protocol-track {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .protocol-track::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .protocol-item {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(184,151,74,0.1);
+  }
+
+  .protocol-item:last-child { border-bottom: none; }
+
+  .protocol-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,151,74,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    background: var(--dark);
+  }
+
+  .protocol-num {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  .protocol-content { flex: 1; padding-top: 10px; }
+
+  .protocol-month {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .protocol-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .protocol-desc {
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.7;
+  }
+
+  /* ─── OZONE CALLOUT ─── */
+  .ozone-section {
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: #2a2620;
+    color: var(--cream);
+  }
+
+  .ozone-section::before {
+    content: 'O³';
+    position: absolute;
+    font-family: var(--serif);
+    font-size: clamp(200px, 35vw, 400px);
+    color: rgba(184,151,74,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ozone-content { position: relative; max-width: 700px; margin: 0 auto; }
+
+  .ozone-label {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .ozone-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .ozone-title em { font-style: italic; color: var(--gold); }
+
+  .ozone-body {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.85);
+    max-width: 560px;
+    margin: 0 auto 48px;
+  }
+
+  .ozone-stats {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+
+  .ozone-stat-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .ozone-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* ─── FOUNDING ─── */
+  .founding-section {
+    padding: 120px 24px;
+    background: var(--dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .founding-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,151,74,0.07) 0%, transparent 70%);
+  }
+
+  .founding-content { position: relative; max-width: 640px; margin: 0 auto; }
+
+  .founding-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(184,151,74,0.3);
+    padding: 8px 20px;
+    margin-bottom: 40px;
+  }
+
+  .founding-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 64px);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .founding-title em { font-style: italic; color: var(--gold); }
+
+  .founding-body {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 48px;
+  }
+
+  .founding-counter {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .counter-item { text-align: center; }
+
+  .counter-num {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .counter-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .founding-cta {
+    display: inline-block;
+    padding: 18px 56px;
+    background: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .founding-cta:hover { background: var(--gold-light); }
+
+  /* ─── FAQ ─── */
+  .faq-section {
+    padding: 120px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+  }
+
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* ─── FOOTER SECTION ─── */
+  .footer-cta {
+    padding: 120px 24px;
+    background: var(--dark);
+    text-align: center;
+  }
+
+  .footer-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 72px);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .footer-title em { font-style: italic; color: var(--gold); }
+
+  .footer-sub {
+    font-size: 14px;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 48px;
+  }
+
+  .footer-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto 20px;
+  }
+
+  .footer-input {
+    flex: 1;
+    padding: 16px 20px;
+    background: rgba(245,240,232,0.06);
+    border: 1px solid rgba(184,151,74,0.25);
+    border-right: none;
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 13px;
+    outline: none;
+  }
+
+  .footer-input::placeholder { color: rgba(245,240,232,0.25); }
+
+  .footer-btn {
+    padding: 16px 28px;
+    background: var(--gold);
+    border: none;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+
+  .footer-btn:hover { background: var(--gold-light); }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .elements-grid { grid-template-columns: 1fr; }
+    .tiers-grid { grid-template-columns: 1fr; }
+    .ozone-stats { gap: 32px; }
+    .founding-counter { gap: 32px; }
+    .footer-form { flex-direction: column; }
+    .footer-input { border-right: 1px solid rgba(184,151,74,0.25); }
+    .protocol-track::before { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .element-card { padding: 36px 24px; }
+    .tier-card { padding: 36px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div style="position:relative; z-index:1;">
+    <div style="display:flex;justify-content:center;margin-bottom:16px;"><svg width="32" height="32" viewBox="0 0 60 60"><circle cx="30" cy="22" r="8" fill="none" stroke="rgba(201,169,110,0.7)" stroke-width="1.5"/><circle cx="18" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.7)" stroke-width="1.5"/><circle cx="42" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.7)" stroke-width="1.5"/><line x1="30" y1="30" x2="22" y2="38" stroke="rgba(201,169,110,0.4)" stroke-width="1"/><line x1="30" y1="30" x2="38" y2="38" stroke="rgba(201,169,110,0.4)" stroke-width="1"/></svg></div>
+    <p class="hero-eyebrow">Soulful Living · Curitiba</p>
+    <h1 class="hero-title">Soulful<br><em>Elements</em><br>Club</h1>
+    <p class="hero-subtitle">Cuidado que vai além da pele.<br>Um cuidado pensado para quem leva a saúde a sério.</p>
+    <a href="#tiers" class="hero-cta"><span>Conhecer os planos</span></a>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubra</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── MANIFESTO ─── -->
+<section class="manifesto fade-in">
+  <p class="manifesto-quote">
+    "Beleza que vem de dentro.<br>
+    <strong>Saúde que transborda para fora.</strong>"
+  </p>
+  <p class="manifesto-body">
+    O Soulful Elements Club nasceu para quem entende que beleza real não é resultado de um único procedimento, é consequência de um cuidado contínuo, inteligente e profundo. Um clube de assinatura onde ciência, natureza e estética se encontram em um protocolo exclusivo pensado para você.
+  </p>
+</section>
+
+<div class="divider fade-in">
+  <div class="divider-line"></div>
+  <svg width="20" height="20" viewBox="0 0 60 60" style="flex-shrink:0;"><circle cx="30" cy="22" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.5"/><circle cx="18" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.5"/><circle cx="42" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.5"/><line x1="30" y1="30" x2="22" y2="38" stroke="rgba(201,169,110,0.45)" stroke-width="1"/><line x1="30" y1="30" x2="38" y2="38" stroke="rgba(201,169,110,0.45)" stroke-width="1"/></svg>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ─── ELEMENTS ─── -->
+<section class="elements-section">
+  <p class="section-label fade-in">Os planos</p>
+  <h2 class="section-title fade-in">Quatro <em>elementos</em>.<br>Uma jornada.</h2>
+  <p class="section-subtitle fade-in">Cada plano representa uma profundidade de transformação diferente. Você escolhe<br>onde quer começar.</p>
+
+  <div class="elements-grid">
+    <div class="element-card fade-in" style="border-color:rgba(201,160,48,0.3);">
+      <span class="element-number" style="color:#c9a030;">01</span>
+      <span class="element-name">Serene</span>
+      <span class="element-tagline">like the sky</span>
+      <span class="element-period">Trimestral</span>
+      <p class="element-desc">O começo de tudo. Três meses para criar o ritual do cuidado, preparar a pele e sentir os primeiros efeitos do ozônio. O céu que acolhe.</p>
+    </div>
+    <div class="element-card fade-in" style="border-color:rgba(123,175,196,0.3);">
+      <span class="element-number" style="color:#7bafc4;">02</span>
+      <span class="element-name">Deep</span>
+      <span class="element-tagline">like the ocean</span>
+      <span class="element-period">Semestral</span>
+      <p class="element-desc">O oceano não revela seus segredos de uma vez. Seis meses de protocolo consistente onde a transformação vai além do visível — e a toxina botulínica marca a virada.</p>
+    </div>
+    <div class="element-card fade-in" style="border-color:rgba(158,74,110,0.3);">
+      <span class="element-number" style="color:#9e4a6e;">03</span>
+      <span class="element-name">Intense</span>
+      <span class="element-tagline">like a desire</span>
+      <span class="element-period">Anual · Facial · Vagas limitadas</span>
+      <p class="element-desc">O desejo sustentado é o que muda a vida. Um ano inteiro de cuidado contínuo, com o tratamento mais completo e transformador que a Soulful oferece.</p>
+    </div>
+    <div class="element-card fade-in" style="border-color:rgba(106,158,106,0.3);">
+      <span class="element-number" style="color:#6a9e6a;">04</span>
+      <span class="element-name">Free</span>
+      <span class="element-tagline">like the wind</span>
+      <span class="element-period">Trimestral · Corporal</span>
+      <p class="element-desc">O vento que liberta. Três meses de tratamento corporal consistente, sessões semanais que trabalham de dentro para fora com leveza que se constrói no tempo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TIERS / PRICING ─── -->
+<section class="tiers-section" id="tiers">
+  <p class="section-label fade-in">Planos e valores</p>
+  <h2 class="section-title fade-in">O que está <em>incluso</em></h2>
+  <p class="section-subtitle fade-in">Todos os planos incluem sessões de ozonioterapia, a base que sustenta tudo. O valor do clube é sempre menor do que contratar cada procedimento separado.</p>
+
+  <div class="tiers-grid fade-in">
+
+    <!-- SERENE -->
+    <div class="tier-card" style="background:#0f1a10; border-top:3px solid #6a9e6a;">
+      <div class="tier-badge outline" style="border-color:rgba(106,158,106,0.4); color:rgba(160,210,160,0.7);">Trimestral · Facial</div>
+      <span class="tier-name" style="color:#c8e0ea;">Serene</span>
+      <span class="tier-italic" style="color:rgba(123,175,196,0.6);">like the sky</span>
+      <div class="tier-price-block">
+        <span class="tier-price" style="color:#f0d878;"><sub style="color:rgba(240,216,120,0.6);">R$</sub>333</span>
+        <span class="tier-price-note" style="color:rgba(106,158,106,0.5);">por mês</span>
+        <span style="font-size:12px; letter-spacing:0.1em; color:rgba(106,158,106,0.7); display:block; margin-top:6px; font-weight:400;">R$1.000 no trimestre</span>
+      </div>
+      <ul class="tier-items">
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">3 sessões de ozonioterapia incluídas</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">1 limpeza de pele profunda</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">1 microagulhamento + ativos</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">1 Lavieen + ativos</li>
+      </ul>
+      <span class="tier-highlight" style="background:rgba(106,158,106,0.1); color:rgba(192,224,192,0.6);">Tratamento: Limpar · Estimular · Iluminar</span>
+      <a href="#contato" class="tier-cta" style="border-color:rgba(106,158,106,0.4); color:#c0e0c0;">Quero o Serene</a>
+    </div>
+
+    <!-- DEEP -->
+    <div class="tier-card" style="background:#0d1a24; border-top:3px solid #7bafc4;">
+      <div class="tier-badge" style="background:rgba(123,175,196,0.2); color:#c8e0ea;">Semestral · Facial</div>
+      <span class="tier-name" style="color:#b8dcd6;">Deep</span>
+      <span class="tier-italic" style="color:rgba(74,158,142,0.7);">like the ocean</span>
+      <div class="tier-price-block">
+        <span class="tier-price" style="color:#c8e0ea;"><sub style="color:rgba(200,224,234,0.6);">R$</sub>417</span>
+        <span class="tier-price-note" style="color:rgba(123,175,196,0.5);">por mês</span>
+        <span style="font-size:12px; letter-spacing:0.1em; color:rgba(123,175,196,0.7); display:block; margin-top:6px; font-weight:400;">R$2.500 no semestre</span>
+      </div>
+      <ul class="tier-items">
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">6 sessões de ozonioterapia incluídas</li>
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">1 limpeza de pele profunda</li>
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">1 microagulhamento + ativos</li>
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">1 Lavieen + ativos</li>
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">1 peeling + ativos</li>
+        <li style="color:#c8e0ea; border-color:rgba(123,175,196,0.1); font-weight:400;">1 toxina botulínica terço superior inclusa</li>
+        <li style="color:rgba(200,224,234,0.7); border-color:rgba(123,175,196,0.1);">Manipulado Regeneração</li>
+      </ul>
+      <span class="tier-highlight" style="background:rgba(123,175,196,0.1); color:rgba(200,224,234,0.6);">Tratamento Serene + Peeling + Toxina botulínica</span>
+      <a href="#contato" class="tier-cta" style="border-color:rgba(123,175,196,0.4); color:#c8e0ea;">Quero o Deep</a>
+    </div>
+
+    <!-- INTENSE -->
+    <div class="tier-card" style="background:#1a0d14; border-top:3px solid #9e4a6e;">
+      <div class="tier-badge outline" style="border-color:rgba(158,74,110,0.4); color:rgba(200,140,168,0.7);">Anual · Facial · Vagas limitadas</div>
+      <span class="tier-name" style="color:#e8c0d4;">Intense</span>
+      <span class="tier-italic" style="color:rgba(158,74,110,0.7);">like a desire</span>
+      <div class="tier-price-block">
+        <span class="tier-price" style="color:#e8c0d4;"><sub style="color:rgba(232,192,212,0.6);">R$</sub>767</span>
+        <span class="tier-price-note" style="color:rgba(158,74,110,0.5);">por mês</span>
+        <span style="font-size:12px; letter-spacing:0.1em; color:rgba(158,74,110,0.7); display:block; margin-top:6px; font-weight:400;">R$9.200 no ano</span>
+      </div>
+      <ul class="tier-items">
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">12 sessões de ozonioterapia incluídas</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">2 limpezas de pele no ano</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">1 microagulhamento + ativos</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">1 Lavieen + ativos</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">1 peeling + ativos</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1); font-weight:500;">2 toxina botulínica terço superior no ano</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1); font-weight:500;">1 Ultraformer fullface</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1); font-weight:500;">1 bioestimulador de colágeno</li>
+        <li style="color:rgba(232,192,212,0.7); border-color:rgba(158,74,110,0.1);">Manipulado Longevidade</li>
+      </ul>
+      <span class="tier-highlight" style="background:rgba(158,74,110,0.1); color:rgba(232,192,212,0.6);">O tratamento mais completo da Soulful</span>
+      <a href="#contato" class="tier-cta" style="border-color:rgba(158,74,110,0.4); color:#e8c0d4;">Quero o Intense</a>
+    </div>
+
+    <!-- FREE -->
+    <div class="tier-card" style="background:#0f1a10; border-top:3px solid #6a9e6a;">
+      <div class="tier-badge outline" style="border-color:rgba(106,158,106,0.4); color:rgba(160,210,160,0.7);">Trimestral · Corporal</div>
+      <span class="tier-name" style="color:#f0d878;">Free</span>
+      <span class="tier-italic" style="color:rgba(201,160,48,0.7);">like the wind</span>
+      <div class="tier-price-block">
+        <span class="tier-price" style="color:#c0e0c0;"><sub style="color:rgba(192,224,192,0.6);">R$</sub>633</span>
+        <span class="tier-price-note" style="color:rgba(106,158,106,0.5);">por mês</span>
+        <span style="font-size:12px; letter-spacing:0.1em; color:rgba(106,158,106,0.7); display:block; margin-top:6px; font-weight:400;">R$1.900 no trimestre</span>
+      </div>
+      <ul class="tier-items">
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">11 sessões de ozonioterapia incluídas</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">6 sessões de ultracavitação, 1 região</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">5 sessões de enzimas, 1 região</li>
+        <li style="color:rgba(192,224,192,0.7); border-color:rgba(106,158,106,0.1);">Tratamento alternado semana a semana</li>
+      </ul>
+      <span class="tier-highlight" style="background:rgba(106,158,106,0.1); color:rgba(192,224,192,0.6);">Reduzir medidas, desinflamar o corpo, melhorar contorno e libertar</span>
+      <a href="#contato" class="tier-cta" style="border-color:rgba(106,158,106,0.4); color:#c0e0c0;">Quero o Free</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── OZONE ─── -->
+<section class="ozone-section">
+  <div class="ozone-content fade-in">
+    <div style="display:flex;justify-content:center;margin-bottom:24px;"><svg width="48" height="48" viewBox="0 0 60 60"><circle cx="30" cy="22" r="8" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="1.2"/><circle cx="18" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="1.2"/><circle cx="42" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="1.2"/><line x1="30" y1="30" x2="22" y2="38" stroke="rgba(201,169,110,0.4)" stroke-width="0.8"/><line x1="30" y1="30" x2="38" y2="38" stroke="rgba(201,169,110,0.4)" stroke-width="0.8"/></svg></div>
+    <p class="ozone-label">A base de tudo</p>
+    <h2 class="ozone-title">Por que o ozônio está em<br><em>todos</em> os planos</h2>
+    <p class="ozone-body">
+      A ozonioterapia não é um procedimento a mais. É o fio que costura o tratamento inteiro. Regulamentada no Brasil e utilizada há mais de 100 anos em países como Alemanha, Itália, Áustria e Estados Unidos, ela age de dentro para fora e potencializa cada procedimento estético que vem depois.
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(184,151,74,0.15); margin:48px auto; text-align:left; max-width:960px;">
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Imunidade</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">O ozônio ativa e modula o sistema imunológico, aumentando a resistência do organismo a vírus, bactérias e fungos. Estudos mostram ação direta contra vírus envelopados, interferindo no encaixe do vírus nas células e reduzindo carga viral.</p>
+      </div>
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Oxigenação celular</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Ativa o metabolismo dos glóbulos vermelhos, aumentando a liberação de oxigênio para tecidos, órgãos e pele. Mais oxigênio nas células significa mais energia, mais regeneração e absorção superior de ativos estéticos.</p>
+      </div>
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Colágeno e pele</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Estimula a produção de colágeno tipo I e a ação de fibroblastos. Estudos clínicos demonstram redução de rugas, melhora de textura, maior firmeza e hidratação, além de restaurar a diversidade da microbiota cutânea.</p>
+      </div>
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Inflamação</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Age como anti-inflamatório sistêmico, reduzindo processos inflamatórios crônicos que aceleram o envelhecimento, prejudicam a pele e comprometem o resultado de procedimentos estéticos.</p>
+      </div>
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Performance e atletas</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Utilizado por atletas de alto rendimento para recuperação muscular acelerada e aumento da resistência. A otimização do transporte de oxigênio beneficia diretamente a performance e o tempo de recuperação.</p>
+      </div>
+      <div style="background:#3a342c; padding:32px 28px;">
+        <p style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Efeito cumulativo</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Sessões regulares criam um ambiente interno cada vez mais receptivo. Cada procedimento estético trabalha melhor do que trabalharia isolado, o que faz do clube um modelo clinicamente superior ao avulso.</p>
+      </div>
+    </div>
+
+    <p style="font-size:15px; color:#f5f0e8; line-height:1.9; max-width:760px; margin:40px auto; text-align:center;">
+      A ozonioterapia é uma das terapias mais estudadas e documentadas da medicina integrativa. Sua ação no organismo vai muito além do estético: ela atua na raiz dos processos que causam envelhecimento precoce, inflamação crônica e baixa imunidade. Ao oxigenar as células em profundidade, o ozônio cria um ambiente interno onde tudo funciona melhor — a pele responde mais, os procedimentos duram mais, o corpo recupera mais rápido. É por isso que ele não é um item opcional no Soulful Elements Club. É a fundação de tudo.
+    </p>
+    <div style="max-width:640px; margin:0 auto; padding:28px 32px; border:1px solid rgba(184,151,74,0.2); text-align:center;">
+      <p style="font-family:var(--serif); font-size:18px; font-style:italic; color:var(--cream); line-height:1.6;">"Mais de 100 anos de ciência. Utilizada por profissionais de saúde no mundo inteiro. O ozônio não é tendência — é fundação."</p>
+    </div>
+
+    <div class="ozone-stats" style="margin-top:48px;">
+      <div>
+        <span class="ozone-stat-num">100+</span>
+        <span class="ozone-stat-label">anos de uso<br>clínico documentado</span>
+      </div>
+      <div>
+        <span class="ozone-stat-num">O³</span>
+        <span class="ozone-stat-label">a base científica<br>de cada tratamento</span>
+      </div>
+      <div>
+        <span class="ozone-stat-num">10+</span>
+        <span class="ozone-stat-label">países com uso<br>regulamentado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROTOCOLS ─── -->
+<section class="protocol-section">
+  <p class="section-label fade-in">Como funciona</p>
+  <h2 class="section-title fade-in" style="color:var(--cream);">A jornada de cada <em>tratamento</em></h2>
+  <p class="section-subtitle fade-in">Cada plano segue uma sequência com lógica clínica, onde cada etapa prepara o terreno para a próxima. O que muda entre as membras é o objetivo e o ritmo. A Marinna acompanha e ajusta ao longo do caminho.</p>
+
+  <!-- TABS -->
+  <div style="display:flex; justify-content:center; gap:0; max-width:640px; margin:0 auto 60px; border:1px solid rgba(184,151,74,0.25);" class="fade-in">
+    <button onclick="showProtocol('serene')" id="tab-serene" style="flex:1; padding:14px; background:var(--gold); border:none; font-family:var(--sans); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--dark); cursor:pointer; font-weight:500; transition:all 0.3s;">Serene</button>
+    <button onclick="showProtocol('deep')" id="tab-deep" style="flex:1; padding:14px; background:transparent; border:none; font-family:var(--sans); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,240,232,0.4); cursor:pointer; transition:all 0.3s;">Deep</button>
+    <button onclick="showProtocol('intense')" id="tab-intense" style="flex:1; padding:14px; background:transparent; border:none; font-family:var(--sans); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,240,232,0.4); cursor:pointer; transition:all 0.3s;">Intense</button>
+    <button onclick="showProtocol('free')" id="tab-free" style="flex:1; padding:14px; background:transparent; border:none; font-family:var(--sans); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,240,232,0.4); cursor:pointer; transition:all 0.3s;">Free</button>
+  </div>
+
+  <!-- SERENE -->
+  <div id="protocol-serene" class="protocol-track fade-in">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span style="font-family:var(--serif); font-size:13px; font-style:italic; color:var(--gold);">like the sky · trimestral</span>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">1</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 1</p>
+        <h3 class="protocol-title">Limpar</h3>
+        <p class="protocol-desc">Limpeza de pele profunda + ozônio. Preparamos o terreno — removemos o que bloqueia, abrimos a pele e ativamos o ambiente interno com o ozônio sistêmico.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">2</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 2</p>
+        <h3 class="protocol-title">Estimular</h3>
+        <p class="protocol-desc">Microagulhamento + ativos + ozônio. A pele já está receptiva. Induzimos colágeno e penetramos os ativos com máxima eficiência.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">3</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 3</p>
+        <h3 class="protocol-title">Iluminar</h3>
+        <p class="protocol-desc">Lavieen + ativos + ozônio. Fechamos o ciclo com hidratação de choque, preenchimento e luminosidade. Você sai diferente — e querendo continuar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEP -->
+  <div id="protocol-deep" class="protocol-track fade-in" style="display:none;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span style="font-family:var(--serif); font-size:13px; font-style:italic; color:var(--gold);">like the ocean · semestral · facial</span>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">1</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 1</p>
+        <h3 class="protocol-title">Limpar</h3>
+        <p class="protocol-desc">Limpeza de pele profunda + ozônio. O mesmo início cuidadoso — preparamos a pele para o que vem nos próximos 5 meses.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">2</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 2</p>
+        <h3 class="protocol-title">Estimular</h3>
+        <p class="protocol-desc">Microagulhamento + ativos + ozônio. Indução de colágeno com pele receptiva. O manipulado Regeneração começa a trabalhar junto.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">3</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 3</p>
+        <h3 class="protocol-title">Iluminar</h3>
+        <p class="protocol-desc">Lavieen + ativos + ozônio. Hidratação de choque, preenchimento e luminosidade. O primeiro ciclo está completo.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">4</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 4</p>
+        <h3 class="protocol-title">Consolidar</h3>
+        <p class="protocol-desc">Só ozônio. O mês que a pele respira, integra e responde. O colágeno construído nos meses anteriores continua se organizando. Pausa inteligente.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">5</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 5</p>
+        <h3 class="protocol-title">Renovar</h3>
+        <p class="protocol-desc">Peeling + ativos + ozônio. Renovação celular da superfície, uniformização da textura — preparando a pele para o fechamento.</p>
+      </div>
+    </div>
+    <div class="protocol-item" style="border-bottom:none;">
+      <div class="protocol-dot" style="border-color:rgba(184,151,74,0.6); background:rgba(184,151,74,0.1);"><span class="protocol-num">6</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month" style="color:var(--gold-light);">Mês 6 · Destaque</p>
+        <h3 class="protocol-title">Transformar</h3>
+        <p class="protocol-desc">Toxina botulínica + ozônio. O fechamento do semestre com o procedimento que mais transforma, aplicado no momento certo depois de 5 meses de construção.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTENSE -->
+  <div id="protocol-intense" class="protocol-track fade-in" style="display:none;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span style="font-family:var(--serif); font-size:13px; font-style:italic; color:var(--gold);">like a desire · anual · facial</span>
+    </div>
+    <div style="background:rgba(184,151,74,0.06); border:1px solid rgba(184,151,74,0.2); padding:20px 24px; margin-bottom:32px; text-align:center;">
+      <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.7;">Os meses 1 a 6 seguem o mesmo tratamento do Deep, incluindo a toxina botulínica no mês 6. Os meses 7 a 12 aprofundam a jornada com os procedimentos mais avançados da Soulful.</p>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">7</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 7</p>
+        <h3 class="protocol-title">Consolidar</h3>
+        <p class="protocol-desc">Ozônio. O primeiro semestre terminou com uma transformação real. Este mês é de integração, deixando o corpo e a pele absorverem tudo o que foi construído antes de começar o próximo ciclo.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">8</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 8</p>
+        <h3 class="protocol-title">2ª Limpeza de pele</h3>
+        <p class="protocol-desc">Limpeza de pele profunda + ozônio. Com 7 meses de colágeno reconstruído e pele ozonizada, a segunda limpeza chega num terreno completamente diferente. O resultado é outro nível.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">9</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 9</p>
+        <h3 class="protocol-title">Ultraformer</h3>
+        <p class="protocol-desc">Ultraformer fullface + ozônio. Ultrassom microfocado para estimular colágeno nas camadas profundas. Num rosto que já está em processo de regeneração há 9 meses, a resposta é ainda maior.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">10</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 10</p>
+        <h3 class="protocol-title">Consolidar</h3>
+        <p class="protocol-desc">Ozônio. O Ultraformer continua trabalhando nos tecidos durante semanas. Este mês deixa o corpo responder, com ozônio sustentando o processo de dentro.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">11</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Mês 11</p>
+        <h3 class="protocol-title">2ª Toxina botulínica</h3>
+        <p class="protocol-desc">2ª aplicação de toxina botulínica + ozônio. A pele está no seu melhor estado do ano para receber e mostrar o resultado. Natural, preciso, duradouro.</p>
+      </div>
+    </div>
+    <div class="protocol-item" style="border-bottom:none;">
+      <div class="protocol-dot" style="border-color:rgba(184,151,74,0.6); background:rgba(184,151,74,0.1);"><span class="protocol-num">12</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month" style="color:var(--gold-light);">Mês 12 · Grande fechamento</p>
+        <h3 class="protocol-title">Bioestimulador</h3>
+        <p class="protocol-desc">Bioestimulador de colágeno + ozônio. Com 12 meses de construção, o bioestimulador encontra uma pele completamente preparada. Os resultados aqui são superiores ao que seriam no início. É a convergência de tudo.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="protocol-free" class="protocol-track fade-in" style="display:none;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span style="font-family:var(--serif); font-size:13px; font-style:italic; color:var(--gold);">like the wind · trimestral · corporal</span>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">1</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Semana 1</p>
+        <h3 class="protocol-title">Desinchar</h3>
+        <p class="protocol-desc">Ultracavitação + ozônio. Começamos quebrando as células de gordura localizada com ultrassom de baixa frequência. O ozônio potencializa a oxigenação tecidual e a drenagem do que foi fragmentado.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">2</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Semana 2</p>
+        <h3 class="protocol-title">Modelar</h3>
+        <p class="protocol-desc">Enzimas + ozônio. As enzimas lipolíticas agem diretamente na gordura localizada e na celulite, o ozônio amplifica a resposta e melhora a circulação local.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot"><span class="protocol-num">3</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month">Semanas 3 a 10</p>
+        <h3 class="protocol-title">Alternância contínua</h3>
+        <p class="protocol-desc">Ultracavitação e enzimas se alternam semana a semana, sempre com ozônio. Cada técnica reforça o trabalho da anterior, a gordura vai sendo reduzida e o contorno se definindo.</p>
+      </div>
+    </div>
+    <div class="protocol-item" style="border-bottom:none;">
+      <div class="protocol-dot" style="border-color:rgba(201,160,48,0.6); background:rgba(201,160,48,0.1);"><span class="protocol-num">11</span></div>
+      <div class="protocol-content">
+        <p class="protocol-month" style="color:#f0d878;">Semana 11 · Fechamento</p>
+        <h3 class="protocol-title">Libertar</h3>
+        <p class="protocol-desc">Última sessão de enzimas + ozônio. O fechamento do trimestre com o corpo transformado, medidas reduzidas, contorno melhorado, leveza que ficou. O vento passou e deixou um corpo diferente.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+const tierColors = {
+  serene: { bg: '#c9a030', text: '#0a0a08' },
+  deep:   { bg: '#7bafc4', text: '#0a0a08' },
+  intense:{ bg: '#9e4a6e', text: '#f5f0e8' },
+  free:   { bg: '#6a9e6a', text: '#0a0a08' }
+};
+function showProtocol(tier) {
+  ['serene','deep','intense','free'].forEach(t => {
+    document.getElementById('protocol-' + t).style.display = t === tier ? 'block' : 'none';
+    const tab = document.getElementById('tab-' + t);
+    if (t === tier) {
+      tab.style.background = tierColors[t].bg;
+      tab.style.color = tierColors[t].text;
+      tab.style.fontWeight = '500';
+    } else {
+      tab.style.background = 'transparent';
+      tab.style.color = 'rgba(245,240,232,0.4)';
+      tab.style.fontWeight = '300';
+    }
+  });
+}
+</script>
+
+<!-- ─── FOUNDING MEMBERS ─── -->
+<section class="founding-section" id="founding">
+  <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.04;pointer-events:none;width:400px;height:400px;" viewBox="0 0 60 60"><circle cx="30" cy="22" r="8" fill="none" stroke="#c9a96e" stroke-width="0.8"/><circle cx="18" cy="42" r="8" fill="none" stroke="#c9a96e" stroke-width="0.8"/><circle cx="42" cy="42" r="8" fill="none" stroke="#c9a96e" stroke-width="0.8"/><line x1="30" y1="30" x2="22" y2="38" stroke="#c9a96e" stroke-width="0.5"/><line x1="30" y1="30" x2="38" y2="38" stroke="#c9a96e" stroke-width="0.5"/></svg>
+  <div class="founding-content fade-in">
+    <div style="display:flex;justify-content:center;margin-bottom:20px;"><svg width="32" height="32" viewBox="0 0 60 60"><circle cx="30" cy="22" r="8" fill="none" stroke="rgba(201,169,110,0.85)" stroke-width="1.5"/><circle cx="18" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.85)" stroke-width="1.5"/><circle cx="42" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.85)" stroke-width="1.5"/><line x1="30" y1="30" x2="22" y2="38" stroke="rgba(201,169,110,0.45)" stroke-width="1"/><line x1="30" y1="30" x2="38" y2="38" stroke="rgba(201,169,110,0.45)" stroke-width="1"/></svg></div>
+    <h2 class="founding-title">Seja uma<br><em>Founding Member</em></h2>
+    <p class="founding-body">
+      As primeiras membras do Soulful Elements Club entram com benefícios exclusivos e o privilégio de fazer parte desta história desde o início. Vagas limitadas. Entre em contato para saber disponibilidade.
+    </p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(184,151,74,0.15); margin:40px 0; text-align:left;">
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">◈ Presente exclusivo de boas-vindas</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">Founding Members recebem uma caixa exclusiva da Soulful. Um presente especial para quem faz parte desta história desde o início.</p>
+      </div>
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;"><svg width="16" height="16" viewBox="0 0 60 60" style="display:inline-block;vertical-align:middle;"><circle cx="30" cy="22" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.8"/><circle cx="18" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.8"/><circle cx="42" cy="42" r="8" fill="none" stroke="rgba(201,169,110,0.8)" stroke-width="1.8"/><line x1="30" y1="30" x2="22" y2="38" stroke="rgba(201,169,110,0.5)" stroke-width="1.2"/><line x1="30" y1="30" x2="38" y2="38" stroke="rgba(201,169,110,0.5)" stroke-width="1.2"/></svg> Desconto em procedimentos avulsos</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">10% no plano semestral (Deep) e 15% no plano anual (Intense) em todos os procedimentos avulsos enquanto sua assinatura estiver ativa.</p>
+      </div>
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">◉ Valor exclusivo</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">O valor e demais benefícios do clube são exclusivos para assinantes.</p>
+      </div>
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">◎ Acesso antecipado</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">Você fica sabendo primeiro. Lançamentos, novos tratamentos, eventos, prioridade de informação e inscrição.</p>
+      </div>
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">○ Fundadora da Soulful</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">Você faz parte da história desde o início. Um pertencimento real que será reconhecido à medida que o clube crescer.</p>
+      </div>
+      <div style="background:var(--dark); padding:28px 24px;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">◐ Atendimento direto</p>
+        <p style="font-size:13px; color:rgba(245,240,232,0.6); line-height:1.6;">Atendidas pela Marinna desde o primeiro dia, ela conhecerá sua pele e seu tratamento profundamente ao longo do tempo.</p>
+      </div>
+    </div>
+    <a href="#contato" class="founding-cta">Quero ser Founding Member</a>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section fade-in" id="faq">
+  <p class="section-label" style="text-align:left; margin-bottom:40px;">Perguntas frequentes</p>
+
+  <div class="faq-item">
+    <h3 class="faq-q">O ozônio dói?</h3>
+    <p class="faq-a">A ozonioterapia é indolor — um procedimento rápido, não invasivo e muito bem tolerado. Muitas pacientes relatam relaxamento durante as sessões. O desconforto, quando existe, é mínimo e passageiro. Os detalhes de como é feita a Marinna explica na sua primeira consulta.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="faq-q">Posso cancelar o plano?</h3>
+    <p class="faq-a">Os planos são comprometimentos trimestrais, semestrais ou anuais com cobrança antecipada. Em caso de cancelamento, é possível pausar o plano por até 30 dias por motivos de saúde. Conversamos caso a caso.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="faq-q">Os procedimentos são agendados como?</h3>
+    <p class="faq-a">Membras têm prioridade de agenda e acesso a horários exclusivos. Você agenda pelo WhatsApp diretamente com a Marinna, com antecedência mínima de 48h.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="faq-q">O manipulado é o mesmo para todas?</h3>
+    <p class="faq-a">Não. O manipulado é prescrito individualmente com base no seu objetivo — colágeno, desinflamação, humor e sono ou emagrecimento. Cada fórmula é única.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="faq-q">Posso começar em qualquer mês?</h3>
+    <p class="faq-a">Sim. O clube aceita novas membras ao longo do ano, mas as vagas são limitadas — especialmente no Intense. Founding Members têm entrada garantida.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="faq-q">Por que o Soulful Elements Club existe?</h3>
+    <p class="faq-a">O clube nasceu para criar uma comunidade de pessoas que entendem que cuidar de si vai além de um procedimento avulso. Como assinante, você já sabe o que vai fazer, quanto vai investir e quanto tempo vai precisar. Não precisa lembrar de agendar — a Marinna cuida disso. O valor é melhor do que no avulso, e você faz parte de algo maior do que uma consulta.</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER CTA ─── -->
+<section class="footer-cta" id="contato">
+  <h2 class="footer-title">Pronta para<br><em>começar</em>?</h2>
+  <p class="footer-sub">Entre em contato pelo WhatsApp. A Marinna responde pessoalmente.</p>
+  <a href="https://wa.me/5541936182382?text=Ol%C3%A1%2C+Marinna%21+Tenho+interesse+em+conhecer+o+Soulful+Elements+Club." class="footer-btn" style="display:inline-block; text-decoration:none; margin-top:8px;">Falar no WhatsApp</a>
+  <br><br>
+  <p class="footer-note">Ou envie uma mensagem diretamente no Instagram <a href="https://instagram.com/soulfulliving.clinica" target="_blank" style="color:var(--gold); text-decoration:none;">@soulfulliving.clinica</a></p>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
