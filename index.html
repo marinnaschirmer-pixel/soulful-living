@@ -397,16 +397,27 @@ footer{background:#e8e4da;padding:0.6rem 3rem 0}
   .meaning-img img{width:55%;margin:0 auto}
 }
 @media(max-width:900px){
-  /* Separação clara entre seções */
-  #procedimentos{padding-top:3rem;border-top:2px solid rgba(78,97,77,.18)}
-  #soulful{padding-top:3rem;border-top:2px solid rgba(78,97,77,.18)}
-  #fundadora{padding-top:3rem;border-top:2px solid rgba(78,97,77,.18);background:var(--cream)}
-  #depoimentos{padding-top:0;border-top:2px solid rgba(78,97,77,.18)}
-  #depoimentos>div{padding-top:3rem!important;padding-left:1.5rem!important;padding-right:1.5rem!important;padding-bottom:3rem!important}
-  /* Respiro interno — conteúdo não começa colado no topo */
-  .integrative-intro{padding-top:1rem}
-  .story-3col{padding-top:2rem}
-  .founder-grid{padding-top:2rem}
+  /* ── Separadores entre seções ── */
+  #procedimentos,#soulful,#fundadora,#depoimentos,#agendar{
+    border-top:1.5px solid rgba(78,97,77,.15);
+    padding-top:2.5rem;
+  }
+  #depoimentos>div{
+    padding:0 1.5rem 3rem!important;
+  }
+  /* ── Fotos menores ── */
+  .founder-img-col img{height:220px;aspect-ratio:unset;object-fit:cover;object-position:top center}
+  .story-3col img{max-height:200px;width:100%;object-fit:cover}
+  .meaning-img{display:none}
+  /* ── Caixinhas menores ── */
+  .proc-card{padding:1rem 1rem 1.4rem}
+  .bcard{padding:1.4rem 1.5rem}
+  .pillar{padding:.5rem .7rem}
+  .softclub-card{margin-bottom:1rem}
+  /* ── Jornada ── */
+  .phase-num{font-size:2.5rem}
+  .phase-name{font-size:1.5rem}
+  .journey-phase{padding:2rem 1.5rem 0}
 }
 @media(max-width:480px){
   .hero-title{font-size:clamp(2.2rem,9vw,2.8rem)}
