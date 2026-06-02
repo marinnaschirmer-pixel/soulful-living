@@ -350,41 +350,62 @@ footer{background:#e8e4da;padding:0.6rem 3rem 0}
   .logo-img{height:50px}
   .nav-tabs-bar{display:none}
   .hamburger{display:flex}
-  .hero-content{padding:0 1.5rem 4rem}
+  /* Hero */
+  .hero-content{padding:88px 1.5rem 3rem;max-width:100%}
+  .hero-title{font-size:clamp(2.6rem,9vw,3.4rem)}
+  .hero-sub{font-size:.95rem}
+  /* Nav panels */
   .tabs-nav{top:56px;justify-content:flex-start;padding:0 .5rem}
   .tab-btn{padding:.9rem 1rem;font-size:.62rem}
+  /* Layouts */
   .founder-grid,.rental-section{grid-template-columns:1fr}
+  .founder-grid{padding:3rem 1.5rem;gap:2rem}
   .founder-img-col{height:auto}
   .founder-img-col::after{display:none}
-  .founder-text-col,.rental-content{padding:3rem 1.5rem}
+  .founder-text-col,.rental-content{padding:0}
+  /* Gallery */
   .soulful-gallery{grid-template-columns:1fr 1fr;padding:0 1rem 1rem}
   .sg1,.sg2,.sg3,.sg4,.sg5,.sg6{grid-column:auto}
   .soulful-gallery img{height:200px}
-  .journey-intro,.journey-phase,.ozone-body{padding-left:1.5rem;padding-right:1.5rem}
+  /* Jornada */
+  .journey-intro{padding:3rem 1.5rem 1.5rem}
+  .journey-phase{padding:1.5rem 1.5rem}
+  .ozone-body{padding-left:1.5rem;padding-right:1.5rem}
   .ozone-grid{grid-template-columns:1fr}
   .ozone-hero-content{padding:0 1.5rem 2.5rem}
+  /* Agendar */
   .booking-cards{flex-direction:column;align-items:center}
-  .rental-features{grid-template-columns:1fr}
-  .footer-inner{grid-template-columns:1fr;gap:2rem}
-  .footer-bottom{flex-direction:column;gap:.4rem}
-  section,.soulful-intro,.plans-section,.blog-section,.booking-section{padding-left:1.5rem;padding-right:1.5rem}
-  .story-meaning{padding:3rem 1.5rem}
-  .soulful-intro{padding:3rem 1.5rem}
+  .booking-cards .bcard{width:100%;max-width:360px}
   .booking-section{padding:4rem 1.5rem}
-  .integrative-intro{padding:2.5rem 1.5rem 1.5rem}
-  .meaning-img img{width:50%;margin:0 auto}
-  .hero-title{font-size:clamp(2.4rem,9vw,3.2rem)}
-  .hero-content{padding:0 1.5rem 3rem}
-  .booking-cards .bcard{width:100%;max-width:340px}
+  /* Sala/rental */
+  .rental-features{grid-template-columns:1fr}
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr;gap:1.5rem}
+  .footer-bottom{flex-direction:column;gap:.4rem}
+  /* Seções gerais */
+  section,.plans-section,.blog-section{padding-left:1.5rem;padding-right:1.5rem}
+  .soulful-intro{padding:3rem 1.5rem}
+  .soulful-text{padding:3rem 1.5rem}
+  .story-meaning{padding:3rem 1.5rem}
+  .story-3col{padding:3rem 1.5rem}
+  .integrative-intro{padding:3rem 1.5rem 1.5rem;max-width:100%}
+  /* Fontes maiores para leitura no celular */
+  .section-body,.story-body,.soul-body,.founder-letter{font-size:1rem;line-height:1.9}
+  .phase-desc,.proc-desc,.ozone-text{font-size:.9rem}
+  .meaning-body p{font-size:.95rem}
+  /* Imagem do significado */
+  .meaning-img img{width:55%;margin:0 auto}
 }
 @media(max-width:480px){
-  .hero-title{font-size:clamp(2rem,8.5vw,2.6rem)}
-  .story-3col{padding:2rem 1.2rem;gap:1.5rem}
+  .hero-title{font-size:clamp(2.2rem,9vw,2.8rem)}
+  .hero-sub{font-size:.9rem}
+  .story-3col{padding:2.5rem 1.2rem;gap:1.5rem}
   .story-meaning{padding:2.5rem 1.2rem}
   .booking-section{padding:3rem 1.2rem}
+  .soulful-intro{padding:2.5rem 1.2rem}
+  .founder-grid{padding:2.5rem 1.2rem}
   .pillars-grid{grid-template-columns:1fr 1fr;gap:.6rem}
   .pillar{padding:.5rem .7rem}
-  .footer-inner{padding-bottom:.5rem}
   .meaning-img img{display:none}
 }
 </style>
