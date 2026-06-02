@@ -396,14 +396,26 @@ footer{background:#e8e4da;padding:0.6rem 3rem 0}
   /* Imagem do significado */
   .meaning-img img{width:55%;margin:0 auto}
 }
+@media(max-width:900px){
+  /* Separadores entre seções no mobile */
+  #procedimentos{border-top:1.5px solid rgba(78,97,77,.12)}
+  #soulful{border-top:1.5px solid rgba(78,97,77,.12)}
+  #fundadora{background:var(--off);border-top:1.5px solid rgba(78,97,77,.12)}
+  #depoimentos{border-top:1.5px solid rgba(78,97,77,.12)}
+  /* Respiro no início de cada seção */
+  .integrative-intro{padding-top:3.5rem}
+  .story-3col{padding-top:3.5rem}
+  .founder-grid{padding-top:3.5rem}
+  #depoimentos>div{padding-top:3.5rem!important;padding-left:1.5rem!important;padding-right:1.5rem!important}
+}
 @media(max-width:480px){
   .hero-title{font-size:clamp(2.2rem,9vw,2.8rem)}
   .hero-sub{font-size:.9rem}
-  .story-3col{padding:2.5rem 1.2rem;gap:1.5rem}
+  .story-3col{padding:3rem 1.2rem;gap:1.5rem}
   .story-meaning{padding:2.5rem 1.2rem}
   .booking-section{padding:3rem 1.2rem}
   .soulful-intro{padding:2.5rem 1.2rem}
-  .founder-grid{padding:2.5rem 1.2rem}
+  .founder-grid{padding:3rem 1.2rem}
   .pillars-grid{grid-template-columns:1fr 1fr;gap:.6rem}
   .pillar{padding:.5rem .7rem}
   .meaning-img img{display:none}
