@@ -24,7 +24,7 @@
   --stone:#f5f3ee;
   --white:#ffffff;
 }
-html{scroll-behavior:smooth} section{scroll-margin-top:120px}
+html{scroll-behavior:smooth;overflow-x:hidden} section{scroll-margin-top:120px}
 *{-webkit-tap-highlight-color:transparent}
 a,button{touch-action:manipulation}
 body{font-family:'Jost',sans-serif;background:var(--stone);color:var(--dark);font-weight:300;overflow-x:hidden}
@@ -53,18 +53,14 @@ body{font-family:'Jost',sans-serif;background:var(--stone);color:var(--dark);fon
     flex:1;display:flex;flex-direction:column;align-items:center;
     justify-content:center;gap:.2rem;text-decoration:none;
     font-family:'Jost',sans-serif;font-size:.47rem;letter-spacing:.1em;
-    text-transform:uppercase;
+    text-transform:uppercase;color:rgba(46,48,40,.35);
+    transition:color .2s;
   }
   .bnav-tab-cta .bnav-pill{
-    border:1.5px solid var(--sage);color:var(--sage);background:transparent;
-    border-radius:2px;padding:.32rem .85rem;
     display:flex;flex-direction:column;align-items:center;gap:.18rem;
-    font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;
-    transition:all .2s;
   }
-  .bnav-tab-cta .bnav-pill svg{stroke:var(--sage);width:16px;height:16px}
-  .bnav-tab-cta.active .bnav-pill{background:var(--sage);color:var(--cream)}
-  .bnav-tab-cta.active .bnav-pill svg{stroke:var(--cream)}
+  .bnav-tab-cta .bnav-pill svg{width:16px;height:16px}
+  .bnav-tab-cta.active{color:var(--sage)}
 }
 
 .ntab-elements{color:var(--gold)!important;font-style:italic}
