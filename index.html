@@ -31,12 +31,10 @@ body{font-family:'Jost',sans-serif;background:var(--stone);color:var(--dark);fon
 /* Tab bar */
 .bottom-nav{display:none}
 @media(max-width:900px){
-  body{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}
-  footer{padding-bottom:calc(0.6rem + env(safe-area-inset-bottom,0px))}
+  body{padding-bottom:68px}
   .bottom-nav{
     display:flex;position:fixed;bottom:0;left:0;right:0;
-    height:auto;min-height:62px;
-    padding-bottom:env(safe-area-inset-bottom,0px);
+    height:62px;
     background:rgba(245,243,238,.97);
     backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border-top:.5px solid rgba(78,97,77,.15);
@@ -922,32 +920,6 @@ document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.toggle('open');
 });
 
-// Tab bar — destaca aba no clique E no scroll
-(function(){
-  const tabs = document.querySelectorAll('[data-tab]');
-  const ids = ['inicio','procedimentos','agendar'];
-
-  function setActive(id){
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
-  }
-
-  function updateOnScroll(){
-    let current = 'inicio';
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if(el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) current = id;
-    });
-    setActive(current);
-  }
-
-  // destaca imediatamente ao tocar/clicar
-  tabs.forEach(t => {
-    if(t.dataset.tab) t.addEventListener('click', () => setActive(t.dataset.tab));
-  });
-
-  window.addEventListener('scroll', updateOnScroll, {passive:true});
-  updateOnScroll();
-})();
 function closeMobile() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
@@ -1111,5 +1083,28 @@ document.querySelectorAll('.proc-card').forEach(card => {
     <span>WhatsApp</span>
   </a>
 </nav>
+<script>
+// Tab bar — aqui o DOM já tem a barra, então querySelector funciona
+(function(){
+  var tabs = document.querySelectorAll('[data-tab]');
+  var ids = ['inicio','procedimentos','agendar'];
+  function setActive(id){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.tab === id); });
+  }
+  function updateOnScroll(){
+    var current = 'inicio';
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.getBoundingClientRect().top <= window.innerHeight * 0.55) current = id;
+    });
+    setActive(current);
+  }
+  tabs.forEach(function(t){
+    if(t.dataset.tab) t.addEventListener('click', function(){ setActive(t.dataset.tab); });
+  });
+  window.addEventListener('scroll', updateOnScroll, {passive:true});
+  updateOnScroll();
+})();
+</script>
 </body>
 </html>
