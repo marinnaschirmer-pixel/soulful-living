@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soulful Living — Health · Wellness · Beauty</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -56,14 +56,15 @@ body{font-family:'Jost',sans-serif;background:var(--stone);color:var(--dark);fon
     text-transform:uppercase;
   }
   .bnav-tab-cta .bnav-pill{
-    background:var(--sage);color:var(--cream);
-    border-radius:2px;padding:.38rem .9rem;
+    border:1.5px solid var(--sage);color:var(--sage);background:transparent;
+    border-radius:2px;padding:.32rem .85rem;
     display:flex;flex-direction:column;align-items:center;gap:.18rem;
     font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;
-    transition:background .2s;
+    transition:all .2s;
   }
-  .bnav-tab-cta .bnav-pill svg{stroke:var(--cream);width:16px;height:16px}
-  .bnav-tab-cta.active .bnav-pill{background:var(--sage-mid)}
+  .bnav-tab-cta .bnav-pill svg{stroke:var(--sage);width:16px;height:16px}
+  .bnav-tab-cta.active .bnav-pill{background:var(--sage);color:var(--cream)}
+  .bnav-tab-cta.active .bnav-pill svg{stroke:var(--cream)}
 }
 
 .ntab-elements{color:var(--gold)!important;font-style:italic}
